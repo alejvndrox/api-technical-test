@@ -1,3 +1,8 @@
+import Strengths from './components/Strengths';
+
+const strengths = document.getElementById('strengths');
+//strengths.innerHTML = Strengths();
+
 const getUserInfo = async () => {
   const apiURL = 'https://torre.bio/api/bios/ajf';
   try {
