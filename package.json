@@ -4,5 +4,8 @@
   "main": "src/index.js",
   "repository": "git@github.com:alejvndrox/api-technical-test.git",
   "author": "Alex <ajf@fastmail.com>",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
 }
