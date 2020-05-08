@@ -4,7 +4,7 @@
   "scripts": {
     "start": "parcel public/index.html",
     "build": "parcel build public/index.html"
-  }
+  },
   "main": "src/index.js",
   "repository": "git@github.com:alejvndrox/api-technical-test.git",
   "author": "Alex <ajf@fastmail.com>",
