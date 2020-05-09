@@ -1,23 +1,17 @@
 import 'core-js/stable';
 import "regenerator-runtime/runtime";
 import Strengths from './components/Strengths';
+import getUserInfo from './components/Strengths';
 
 const strengths = document.getElementById('strengths');
-strengths.innerHTML = Strengths();
 
-const getUserInfo = async () => {
-  const apiURL = 'https://torre.bio/api/bios/ajf';
-  try {
-      const response = await fetch(apiURL);
-      const data = await response.json();
-      console.log(data);
-  } catch (e) {
-      console.log('There was a fetch error: ' + e);
-  }
+
+const render = async () => {
+  strengths.innerHTML = await getUserInfo();
 }
-getUserInfo();
+render();
 
-const getJobInfo = async () => {
+/* const getJobInfo = async () => {
   const apiURL = 'https://torre.co/api/opportunities/2W11EaWq';
   try {
       const response = await fetch(apiURL);
@@ -27,4 +21,4 @@ const getJobInfo = async () => {
       console.log('There was a fetch error: ' + e);
   }
 }
-getJobInfo();
+getJobInfo(); */
