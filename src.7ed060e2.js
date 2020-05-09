@@ -11966,12 +11966,63 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var Strengths = function Strengths() {
-  var view = "\n    <li>Strength 1</li>\n  ";
-  return view;
-};
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
-var _default = Strengths;
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var getUserInfo = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+    var apiURL, response, data, userStrengths, view;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            apiURL = 'https://torre.bio/api/bios/ajf';
+            _context.prev = 1;
+            _context.next = 4;
+            return fetch(apiURL);
+
+          case 4:
+            response = _context.sent;
+            _context.next = 7;
+            return response.json();
+
+          case 7:
+            data = _context.sent;
+            userStrengths = data.strengths;
+            console.log(userStrengths);
+            view = "\n            ".concat(userStrengths.map(function (strength) {
+              return "\n                <li>\n                  ".concat(strength.name, "\n                </li>\n            ");
+            }).join(''), "\n    "); //console.log(data.strengths)
+
+            return _context.abrupt("return", view);
+
+          case 14:
+            _context.prev = 14;
+            _context.t0 = _context["catch"](1);
+            console.log('There was a fetch error: ' + _context.t0);
+
+          case 17:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, null, [[1, 14]]);
+  }));
+
+  return function getUserInfo() {
+    return _ref.apply(this, arguments);
+  };
+}();
+/* const Strengths = () => {
+  const view = `
+    <li>Strength 1</li>
+  `;
+  return view;
+} */
+
+
+var _default = getUserInfo;
 exports.default = _default;
 },{}],"../src/index.js":[function(require,module,exports) {
 "use strict";
@@ -11989,93 +12040,44 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 var strengths = document.getElementById('strengths');
-strengths.innerHTML = (0, _Strengths.default)();
 
-var getUserInfo = /*#__PURE__*/function () {
+var render = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-    var apiURL, response, data;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            apiURL = 'https://torre.bio/api/bios/ajf';
-            _context.prev = 1;
-            _context.next = 4;
-            return fetch(apiURL);
+            _context.next = 2;
+            return (0, _Strengths.default)();
 
-          case 4:
-            response = _context.sent;
-            _context.next = 7;
-            return response.json();
+          case 2:
+            strengths.innerHTML = _context.sent;
 
-          case 7:
-            data = _context.sent;
-            console.log(data);
-            _context.next = 14;
-            break;
-
-          case 11:
-            _context.prev = 11;
-            _context.t0 = _context["catch"](1);
-            console.log('There was a fetch error: ' + _context.t0);
-
-          case 14:
+          case 3:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[1, 11]]);
+    }, _callee);
   }));
 
-  return function getUserInfo() {
+  return function render() {
     return _ref.apply(this, arguments);
   };
 }();
 
-getUserInfo();
-
-var getJobInfo = /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-    var apiURL, response, data;
-    return regeneratorRuntime.wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            apiURL = 'https://torre.co/api/opportunities/2W11EaWq';
-            _context2.prev = 1;
-            _context2.next = 4;
-            return fetch(apiURL);
-
-          case 4:
-            response = _context2.sent;
-            _context2.next = 7;
-            return response.json();
-
-          case 7:
-            data = _context2.sent;
-            console.log(data);
-            _context2.next = 14;
-            break;
-
-          case 11:
-            _context2.prev = 11;
-            _context2.t0 = _context2["catch"](1);
-            console.log('There was a fetch error: ' + _context2.t0);
-
-          case 14:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2, null, [[1, 11]]);
-  }));
-
-  return function getJobInfo() {
-    return _ref2.apply(this, arguments);
-  };
-}();
-
-getJobInfo();
+render();
+/* const getJobInfo = async () => {
+  const apiURL = 'https://torre.co/api/opportunities/2W11EaWq';
+  try {
+      const response = await fetch(apiURL);
+      const data = await response.json();
+      console.log(data);
+  } catch (e) {
+      console.log('There was a fetch error: ' + e);
+  }
+}
+getJobInfo(); */
 },{"core-js/stable":"../node_modules/core-js/stable/index.js","regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js","./components/Strengths":"../src/components/Strengths.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -12104,7 +12106,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57393" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57405" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
