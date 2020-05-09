@@ -1,7 +1,9 @@
+import 'core-js/stable';
+import "regenerator-runtime/runtime";
 import Strengths from './components/Strengths';
 
 const strengths = document.getElementById('strengths');
-//strengths.innerHTML = Strengths();
+strengths.innerHTML = Strengths();
 
 const getUserInfo = async () => {
   const apiURL = 'https://torre.bio/api/bios/ajf';
