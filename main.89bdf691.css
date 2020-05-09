@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #DAFFA3;
+  background-color: #2d2d2d;
+  font-family: "Open Sans", system-ui, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+li {
+  padding: 4px 7px;
+  margin: 3px;
+}
+
+/*# sourceMappingURL=/main.89bdf691.css.map */
